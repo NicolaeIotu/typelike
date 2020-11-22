@@ -1,0 +1,50 @@
+{
+  "name": "typelike",
+  "version": "0.1.0",
+  "description": "Deep type checking by comparison",
+  "main": "lib/typelike.js",
+  "scripts": {
+    "start": "node dist/typelike.js",
+    "test": "tap --timeout=0 --coverage --no-browser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolaeIotu/typelike.git"
+  },
+  "keywords": [
+    "typelike",
+    "types",
+    "checks",
+    "compare",
+    "deep",
+    "checking",
+    "comparison"
+  ],
+  "author": {
+    "email": "nicolae.g.iotu@gmail.com",
+    "name": "Nicolae, Iotu",
+    "url": "https://github.com/NicolaeIotu"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/NicolaeIotu/typelike/issues"
+  },
+  "homepage": "https://github.com/NicolaeIotu/typelike#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "browserify": "^17.0.0",
+    "core-js": "^3.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "grunt": "^1.3.0",
+    "grunt-contrib-uglify": ">=5.0.0",
+    "grunt-shell": "^3.0.1",
+    "jsdoc": "^3.6.6",
+    "tap": "^14.10.8"
+  }
+}

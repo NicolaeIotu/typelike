@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browser Example 1</title>
+    <script src="../dist/typelike.bundle.js"></script>
+</head>
+<body>
+<script>
+
+  const typelike = typelikeBundled.typelike
+
+  const testObject = {
+    lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
+    arr: [[1, 'xyz'], 'abcdef']
+  }
+
+  const templateObject = {
+    lvl1: { lvl2: [3, 4, 212], sm: '' },
+    arr: [[44, ''], '']
+  }
+
+  console.log(typelike(testObject, templateObject)) // true
+
+</script>
+</body>
+</html>
