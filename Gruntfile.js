@@ -13,6 +13,7 @@ module.exports = function (grunt) {
           'npm install',
           'rm -f package-lock.json',
           'rm -f *.tgz',
+          'rm -rf ./dist',
           'rm -rf ./docs',
           'npm uninstall',
           'rm -rf ./node_modules',
@@ -40,8 +41,7 @@ module.exports = function (grunt) {
       },
       pretest: {
         command: 'grunt jsdoc && ' +
-          'babel "<%= __cwd %>/lib" --out-dir "<%= __cwd %>/dist" --minified --compact=true --no-comments && ' +
-          'browserify -e "<%= __cwd %>/dist/typelike.js" -o "<%= __cwd %>/dist/typelike.bundle.js" -s' +
+          'browserify -e "<%= __cwd %>/lib/typelike.js" -o "<%= __cwd %>/dist/typelike.bundle.js" -s' +
           ' typelikeBundled && ' +
           'node "<%= __cwd %>/scripts/dist-files-append-license.js"'
       }

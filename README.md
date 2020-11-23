@@ -104,20 +104,20 @@ console.log(typelike(testObject, templateObject)) // true
 [typelike Settings](#typelike-settings).
 
 In order to pass **typelike** tests the following logic applies:
-* for objects and arrays
-  - tests pass if keys are identical for both subject object and template object
-  - tests pass if the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof
-  </a> ) of data corresponding to a key is identical for both subject object and template object
+* for **objects and arrays** tests pass if:
+  - keys are identical for both subject object and template object and ...
+  - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of data 
+    corresponding to a key is identical for both subject object and template object.
   - if the data corresponding to a key is iterable as understood by **typelike** (array, object, map, set) the checks
     continue at the next deeper level
-* for maps and sets
-  - tests pass if the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof
-    </a> ) of data corresponding to an entry is identical for both subject object and template object
+* for maps and sets tests pass if:
+  - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of data 
+    corresponding to an entry is identical for both subject object and template object.
   - if the data corresponding to an entry is iterable as understood by **typelike** (array, object, map, set) the checks 
     continue at the next deeper level
-* for any other type
-  - tests pass if the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof
-    </a> ) of subject data is identical for both subject object and template object
+* for any other type tests pass if:
+  - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of
+    subject data is identical for both subject object and template object
 
 ## Using multiple templates with typelike
 Multiple templates can be used with every call to `typelike`. If the subject object (which should be the first

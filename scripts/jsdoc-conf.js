@@ -5,7 +5,7 @@ module.exports = {
     includePattern: '.+\\.js(doc|x)?$',
     excludePattern: '(^|\\/|\\\\)_',
     exclude: [
-      './.github', './.idea', './.nyc_output', './dist', './examples', './node_modules', 'babel.config.js', 'Gruntfile.js'
+      './.github', './.idea', './.nyc_output', './dist', './examples', './node_modules', 'Gruntfile.js'
     ]
   },
   sourceType: 'module',

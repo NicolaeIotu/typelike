@@ -1,4 +1,4 @@
-NOTICE: this file and the LICENSE file must be kept as per terms of the 
+NOTICE: this file and the LICENSE file must be kept as per terms of the
 Apache Version 2.0 License and any changes claimed by a work of authorship
 using typelike directly, or using works of authorship using typelike, must be
 added at the end of it even if such products are published under a different
@@ -19,7 +19,6 @@ The License covers the following components of typelike:
 - '.eslintrc.json' file
 - '.gitignore' file
 - '.npmignore' file
-- 'babel.config.js' file
 - 'CHANGELOG.md' file
 - 'Gruntfile.js' file
 - 'LICENSE' file

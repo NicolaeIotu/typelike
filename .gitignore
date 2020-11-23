@@ -11,7 +11,6 @@
 !.eslintrc.json
 !.gitignore
 !.npmignore
-!babel.config.js
 !CHANGELOG.md
 !Gruntfile.js
 !LICENSE
