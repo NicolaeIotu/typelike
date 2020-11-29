@@ -1,5 +1,5 @@
 const tap = require('tap')
-const { typelike } = require(`${process.cwd()}`)
+const { typelike, typelikeCustom } = require(`${process.cwd()}`)
 
 const testObject = {
   lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
@@ -21,14 +21,33 @@ const templateObject1 = {
   basic: 'testtesttest'
 }
 const templateObject2 = {
-  lvl1: { sm: 'type ... like' },
-  arr: [[1], 'abcdef']
+  lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
+  b: [[1, 'xyz'], 'abcdef']
 }
 const templateObject3 = {
   lvl1: { lvl2: [3, 4, 212], sm: '' },
   arr: [[44, ''], '']
 }
 
-// console.log(typelike(testObject, templateObject1, templateObject2))
+const templateObject4 = {
+  lvl1: [],
+  arr: 1
+}
+
 tap.notOk(typelike(testObject, templateObject1, templateObject2))
 tap.ok(typelike(testObject, templateObject1, templateObject2, templateObject3))
+
+tap.notOk(typelikeCustom(testObject, templateObject2, {
+  properties: {
+    allowMissing: false
+  }
+}))
+
+tap.ok(typelikeCustom(testObject, templateObject1, {
+  maxDepth: 1,
+  properties: {
+    allowMissing: true
+  }
+}))
+
+tap.notOk(typelike(testObject, templateObject4))
