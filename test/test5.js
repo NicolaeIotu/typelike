@@ -1,5 +1,5 @@
 const tap = require('tap')
-const { typelike, typelikeCustom } = require('../lib/typelike')
+const { typelike, typelikeCustom } = require(`${process.cwd()}/lib/typelike`)
 
 const st1 = new Set()
 st1.add(1)

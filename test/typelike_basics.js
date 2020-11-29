@@ -1,5 +1,5 @@
 const tap = require('tap')
-const { typelike, typelikeCustom } = require('../lib/typelike')
+const { typelike, typelikeCustom } = require(`${process.cwd()}/lib/typelike`)
 
 tap.throws(() => {
   typelike({})

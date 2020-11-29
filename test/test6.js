@@ -1,5 +1,5 @@
 const tap = require('tap')
-const { typelikeCustom } = require(`${process.cwd()}`)
+const { typelikeCustom } = require(`${process.cwd()}/lib/typelike`)
 
 const testObject = {
   lvl1: 1

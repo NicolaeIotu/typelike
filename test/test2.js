@@ -1,5 +1,5 @@
 const tap = require('tap')
-const { typelike } = require(`${process.cwd()}`)
+const { typelike } = require(`${process.cwd()}/lib/typelike`)
 
 function contentGenerator () {
   // ...
