@@ -1,3 +1,6 @@
+## v0.3.6 Improved efficiency
+Improved maps and sets logic by eliminating double checks of properties.allowMissing
+
 ## v0.2.4 Correct error eliminate babel and dist/typelike.js
 
 ## v0.1.3 Add package-lock.json and Correct error cases

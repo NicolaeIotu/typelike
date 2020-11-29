@@ -1,11 +1,11 @@
 {
   "name": "typelike",
-  "version": "0.2.4",
+  "version": "0.3.6",
   "description": "Deep type checking by comparison",
-  "main": "lib/typelike.js",
+  "main": "dist/typelike.js",
   "scripts": {
-    "start": "node lib/typelike.js",
-    "test": "tap --timeout=0 --coverage --no-browser"
+    "start": "node dist/typelike.js",
+    "test": "grunt pretest && tap --timeout=0 --no-browser --functions=100 --lines=100 --statements=100 --branches=97 --reporter=base"
   },
   "repository": {
     "type": "git",
@@ -38,9 +38,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "grunt": "^1.3.0",
-    "grunt-contrib-uglify": ">=5.0.0",
     "grunt-shell": "^3.0.1",
     "jsdoc": "^3.6.6",
-    "tap": "^14.10.8"
+    "tap": "^14.10.8",
+    "terser": "^5.5.1"
   }
 }
