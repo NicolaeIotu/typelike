@@ -1,3 +1,5 @@
+/* typelike is Copyright (C) 2020 Nicolae Iotu, nicolae.g.iotu@gmail.com
+Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.typelikeBundled = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 'use strict'
 
@@ -71,12 +73,12 @@ function compare (o, t) {
     }
 
     if (ito >= 3) {
-      const osize = Object.keys(o).length
-      const tsize = Object.keys(t).length
+      const oSize = Object.keys(o).length
+      const tSize = Object.keys(t).length
       if (!typelikeSettings.properties.allowMissing) {
-        if (osize === 0) {
-          return osize === tsize
-        } else if (osize !== tsize) {
+        if (oSize === 0) {
+          return oSize === tSize
+        } else if (oSize !== tSize) {
           return false
         }
       }
@@ -93,39 +95,37 @@ function compare (o, t) {
       }
     } else {
       // Map and Set logic
-      const oKeysSize = o.size
-      if (!typelikeSettings.properties.allowMissing && oKeysSize !== t.size) {
-        return false
-      } else {
-        if (!typelikeSettings.properties.allowMissing) {
-          if (o.size === 0) {
-            return o.size === t.size
-          } else if (o.size !== t.size) {
+      const oSize = o.size
+      const tSize = t.size
+
+      if (!typelikeSettings.properties.allowMissing) {
+        if (oSize === 0) {
+          return oSize === tSize
+        } else if (oSize !== tSize) {
+          return false
+        }
+      }
+
+      const oKeysIterator = o.keys()
+      const tKeysIterator = t.keys()
+      if (ito === 1) {
+        // sets
+        for (let i = 0; i < oSize; i++) {
+          if (!compare(oKeysIterator.next().value, tKeysIterator.next().value)) {
             return false
           }
         }
-
-        const oKeysIterator = o.keys()
-        const tKeysIterator = t.keys()
-        if (ito === 1) {
-          // sets
-          for (let i = 0; i < oKeysSize; i++) {
-            if (!compare(oKeysIterator.next().value, tKeysIterator.next().value)) {
+      } else {
+        // maps
+        const oValuesIterator = o.values()
+        const tValuesIterator = t.values()
+        for (let i = 0; i < oSize; i++) {
+          if (oKeysIterator.next().value === tKeysIterator.next().value) {
+            if (!compare(oValuesIterator.next().value, tValuesIterator.next().value)) {
               return false
             }
-          }
-        } else {
-          // maps
-          const oValuesIterator = o.values()
-          const tValuesIterator = t.values()
-          for (let i = 0; i < oKeysSize; i++) {
-            if (oKeysIterator.next().value === tKeysIterator.next().value) {
-              if (!compare(oValuesIterator.next().value, tValuesIterator.next().value)) {
-                return false
-              }
-            } else {
-              return false
-            }
+          } else {
+            return false
           }
         }
       }
@@ -143,13 +143,13 @@ function compare (o, t) {
 }
 
 module.exports.typelike = function (obj, templates) {
-  const lastindex = arguments.length - 1
-  if (lastindex < 1) {
+  const lastIndex = arguments.length - 1
+  if (lastIndex < 1) {
     throw new Error('At least two parameters required.')
   }
 
   let result = false
-  for (let i = 1; i <= lastindex; i++) {
+  for (let i = 1; i <= lastIndex; i++) {
     result = result || compare(obj, arguments[i])
   }
 
@@ -161,19 +161,16 @@ module.exports.typelike = function (obj, templates) {
 
 // this form assumes that the last object is a settings object
 module.exports.typelikeCustom = function (obj) {
-  const lastindex = arguments.length - 1
-  if (lastindex < 2) {
+  const lastIndex = arguments.length - 1
+  if (lastIndex < 2) {
     throw new Error('At least three parameters required.')
   }
-  typelikeSettings = arguments[lastindex]
+  typelikeSettings = arguments[lastIndex]
   return module.exports.typelike.apply(null, Array.from(arguments).filter(
     function (e, i) {
-      return (i !== lastindex)
+      return (i !== lastIndex)
     }))
 }
 
 },{}]},{},[1])(1)
 });
-
-/* typelike is Copyright (C) 2020 Nicolae Iotu, nicolae.g.iotu@gmail.com
-Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
