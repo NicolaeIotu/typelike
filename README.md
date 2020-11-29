@@ -104,15 +104,15 @@ console.log(typelike(testObject, templateObject)) // true
 [typelike Settings](#typelike-settings).
 
 In order to pass **typelike** tests the following logic applies:
-* for **objects and arrays** tests pass if:
+* for **arrays, objects and maps** tests pass if:
   - keys are identical for both subject object and template object and ...
   - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of data 
     corresponding to a key is identical for both subject object and template object.
   - if the data corresponding to a key is iterable as understood by **typelike** (array, object, map, set) the checks
     continue at the next deeper level
-* for maps and sets tests pass if:
+* for **sets** tests pass if:
   - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of data 
-    corresponding to an entry is identical for both subject object and template object.
+    corresponding to an entry is identical for both subject set and template set.
   - if the data corresponding to an entry is iterable as understood by **typelike** (array, object, map, set) the checks 
     continue at the next deeper level
 * for any other type tests pass if:
@@ -131,7 +131,7 @@ const testObject = {
   arr: [[1, 'xyz'], 'abcdef']
 }
 
-const templateObject1 = {
+const template1 = {
   lvl1: {
     lvl2: {
       lvl3: {
@@ -145,17 +145,17 @@ const templateObject1 = {
   arr: [[1, 'xyz'], 'abcdef'],
   basic: 'testtesttest'
 }
-const templateObject2 = {
+const template2 = {
   lvl1: { sm: 'type ... like' },
   arr: [[1], 'abcdef']
 }
-const templateObject3 = {
+const template3 = {
   lvl1: { lvl2: [3, 4, 212], sm: '' },
   arr: [[44, ''], '']
 }
 
-console.log(typelike(testObject, templateObject1, templateObject2)) // false
-console.log(typelike(testObject, templateObject1, templateObject2, templateObject3)) // true
+console.log(typelike(testObject, template1, template2)) // false
+console.log(typelike(testObject, template1, template2, template3)) // true
 ```
 
 ## typelike Settings
@@ -174,8 +174,8 @@ console.log(typelike(testObject, templateObject1, templateObject2, templateObjec
 }
 ```
 * **maxDepth** indicates the maximum depth allowed for iterations. Defaults to `0` (unlimited depth levels)
-* **properties.allowMissing** indicates if the properties are mandatory, or are not mandatory and can miss from arrays
- and objects. Defaults to `false` (all properties are mandatory).
+* **properties.allowMissing** indicates if the keys/properties are mandatory, or are not mandatory and can miss from
+ arrays, objects, maps and sets. Defaults to `false` (all keys/properties are mandatory).
 
 **Example:**
 ```
@@ -202,10 +202,9 @@ console.log(typelikeCustom(testObject, templateObject, settings)) // true
 ```
 
 ## Others
-**typelike** should fit most target purposes. For some cases (still uncovered) remember you can use as many
- templates as needed. 
+**typelike** should fit most target purposes. For some cases remember you can use as many templates as needed. 
  
-Additional settings are planned for the next releases. As always for suggestions and issues contact the author.
+Additional settings are planned for the next releases. For suggestions and issues please contact the author.
 
 
 **typelike** is &copy; Copyright 2020 Nicolae Iotu, nicolae.g.iotu@gmail.com
