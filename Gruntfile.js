@@ -11,10 +11,11 @@ module.exports = function (grunt) {
       purge: {
         command: [
           'npm install',
-          'rm -f package-lock.json',
           'rm -f *.tgz',
           'rm -rf ./dist',
+          'mkdir -p dist',
           'rm -rf ./docs',
+          'mkdir -p docs',
           'npm uninstall',
           'rm -rf ./node_modules',
           'rm -rf ./.nyc_output'
@@ -43,7 +44,8 @@ module.exports = function (grunt) {
         command: 'grunt jsdoc && ' +
           'browserify -e "<%= __cwd %>/lib/typelike.js" -o "<%= __cwd %>/dist/typelike.bundle.js" -s' +
           ' typelikeBundled && ' +
-          'node "<%= __cwd %>/scripts/dist-files-append-license.js"'
+          'terser --compress --output "<%= __cwd %>/dist/typelike.js" -- "<%= __cwd %>/lib/typelike.js" && ' +
+          'node "<%= __cwd %>/scripts/dist-files-insert-license.js"'
       }
     }
   })
