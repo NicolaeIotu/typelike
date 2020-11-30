@@ -5,6 +5,7 @@
   "main": "dist/typelike.js",
   "scripts": {
     "start": "node dist/typelike.js",
+    "pretest": "standard lib/*",
     "test": "grunt pretest && tap --timeout=0 --no-browser --functions=100 --lines=100 --statements=100 --branches=97 --reporter=base"
   },
   "repository": {
