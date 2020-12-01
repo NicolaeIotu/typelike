@@ -19,7 +19,7 @@ fi
 # add here top level folders containing version dependent content
 for version_dependent_folder in 'lib' ;
 do
-    find "./${version_dependent_folder}" -name "*.js" \
+    find "./${version_dependent_folder}" -name "*.js" -type f \
         -exec rm -f "{}.bak" ';' -a \
         -exec cp -f "{}" "{}.bak" ';' -a \
         -exec sh -c 'sed "s/${2}/${1}/g" "${0}.bak" > "${0}"' "{}" "${1}" "${npm_package_version}"  ';' -a \
