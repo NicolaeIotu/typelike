@@ -1,11 +1,15 @@
 {
   "name": "typelike",
-  "version": "0.3.7",
+  "version": "0.3.6",
   "description": "Deep type checking by comparison",
   "main": "dist/typelike.js",
   "scripts": {
-    "start": "node dist/typelike.js",
+    "coverage": "tap --check-coverage --branches=97",
+    "preversion": "./scripts/preversion.sh $(node -p 'JSON.parse(fs.readFileSync(`package.json`)).version') && npm test",
+    "version": "git add -A dist",
+    "postversion": "git push && git push --tags",
     "standard": "standard lib/*",
+    "start": "node dist/typelike.js",
     "test": "grunt pretest && tap --timeout=0 --no-browser --functions=100 --lines=100 --statements=100 --branches=97 --reporter=base"
   },
   "repository": {
