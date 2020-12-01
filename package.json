@@ -6,7 +6,7 @@
   "scripts": {
     "coverage": "tap --check-coverage --branches=97",
     "preversion": "./scripts/preversion.sh $(node -p 'JSON.parse(fs.readFileSync(`package.json`)).version') && npm test",
-    "version": "git add -A dist",
+    "version": "git add -A dist docs",
     "postversion": "git push && git push --tags",
     "standard": "standard lib/*",
     "start": "node dist/typelike.js",
