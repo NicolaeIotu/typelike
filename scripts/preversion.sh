@@ -22,7 +22,7 @@ do
     find "./${version_dependent_folder}" -name "*.js" \
         -exec rm -f "{}.bak" ';' -a \
         -exec cp -f "{}" "{}.bak" ';' -a \
-        -exec sh -c 'sed -i "s/${2}/${1}/g" "${0}"' "{}" "${1}" "${npm_package_version}"  ';' -a \
+        -exec sh -c 'sed "s/${2}/${1}/g" "${0}.bak" > "${0}"' "{}" "${1}" "${npm_package_version}"  ';' -a \
         -exec git add "{}" ';'
 done
 
