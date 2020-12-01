@@ -1,6 +1,8 @@
 # typelike Changelog
 
-## v0.3.7 Badges and code style addition
+## v0.3.8 Backend and documentation improvements
+
+## v0.3.7 Backend improvements
 
 ## v0.3.6 Improved efficiency
 Improved maps and sets logic by eliminating double checks of properties.allowMissing
