@@ -1,10 +1,13 @@
 ![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/tests/badge.svg)
 ![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/standard%20code%20style/badge.svg)
+![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/max%20coverage/badge.svg)
 
 # typelike
 
 With **typelike** you can reliably determine if an object resembles other template object(s) used as reference.<br>
-**typelike** is script only, lightweight, zero dependencies, fast, easily verifiable and easy to use.
+The comparison is done using the keys and the type of data (xtypeof) where applicable.<br>
+In practice using **typelike** is a breeze. You just get a trusted object and have **typelike** compare with a target
+ object. That's all. Plain Javascript, no aliens, lightweight, zero dependencies, fast, easy to verify and use.
 
 * [Examples](#examples)
   * [typelike in Node.js](#typelike-in-nodejs)
