@@ -1,11 +1,11 @@
 ![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/tests/badge.svg)
-![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/standard%20code%20style/badge.svg)
 ![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/max%20coverage/badge.svg)
+![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/standard%20code%20style/badge.svg)
 
 # typelike
 
 With **typelike** you can reliably determine if an object resembles other template object(s) used as reference.<br>
-The comparison is done using the keys and the type of data (xtypeof) where applicable.<br>
+The comparison is done using the keys and the type of data where applicable.<br>
 In practice using **typelike** is a breeze. You just get a trusted object and have **typelike** compare with a target
  object. That's all. Plain Javascript, no aliens, lightweight, zero dependencies, fast, easy to verify and use.
 
@@ -108,22 +108,21 @@ console.log(typelike(testObject, templateObject)) // true
 ## How to compare with typelike
 **typelike** iterates as deeply as possible any arrays, objects, maps and sets, while taking into account 
 [typelike Settings](#typelike-settings).
+For type checking **typelike** uses <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">**xtypeof**</a> 
+which is included as part of the application.
 
 In order to pass **typelike** tests the following logic applies:
 * for **arrays, objects and maps** tests pass if:
   - keys are identical for both subject object and template object and ...
-  - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of data 
-    corresponding to a key is identical for both subject object and template object.
+  - the type of data corresponding to a key is identical for both subject object and template object.
   - if the data corresponding to a key is iterable as understood by **typelike** (array, object, map, set) the checks
     continue at the next deeper level
 * for **sets** tests pass if:
-  - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of data 
-    corresponding to an entry is identical for both subject set and template set.
+  - the type of data corresponding to an entry is identical for both subject set and template set.
   - if the data corresponding to an entry is iterable as understood by **typelike** (array, object, map, set) the checks 
     continue at the next deeper level
 * for any other type tests pass if:
-  - the type ( <a href="https://github.com/NicolaeIotu/xtypeof" title="xtypeof" target="_blank">xtypeof</a> ) of
-    subject data is identical for both subject object and template object
+  - the type of subject data is identical for both subject object and template object
 
 ## Using multiple templates with typelike
 Multiple templates can be used with every call to `typelike`. If the subject object (which should be the first
