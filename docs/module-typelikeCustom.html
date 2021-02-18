@@ -45,7 +45,8 @@ be a special settings object which is mandatory and has the following default fo
 <pre class="prettyprint source"><code>{
     maxDepth: 0,
     properties: {
-        allowMissing: false
+        allowMissing: false,
+        allowNull: false
     }
 }
 </code></pre>
@@ -213,7 +214,7 @@ call only.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="typelike.js.html">typelike.js</a>, <a href="typelike.js.html#line274">line 274</a>
+        <a href="typelike.js.html">typelike.js</a>, <a href="typelike.js.html#line277">line 277</a>
     </li></ul></dd>
     
 
@@ -278,7 +279,8 @@ const templateObject = {
 const settings = {
     maxDepth: 3,
     properties: {
-        allowMissing: true
+        allowMissing: true,
+        allowNull: true
     }
 }
 console.log(typelikeCustom(testObject, templateObject, settings)) // true</code></pre>
