@@ -24,7 +24,7 @@ module.exports = function (grunt) {
       },
       eslintInit: {
         command: 'printf \'%s\n%s\n%s\n\' \'Use the following to initialize eslint:\' \'cd "<%= __cwd %>"\' ' +
-          '\'eslint --init\''
+                    '\'eslint --init\''
       },
       eslintFix: {
         command: 'eslint --fix -c "<%= __cwd %>/.eslintrc.json"',
@@ -42,10 +42,10 @@ module.exports = function (grunt) {
       },
       pretest: {
         command: 'grunt jsdoc && ' +
-          'terser --compress --output "<%= __cwd %>/dist/typelike.js" -- "<%= __cwd %>/lib/typelike.js" && ' +
-          'browserify -e "<%= __cwd %>/dist/typelike.js" -o "<%= __cwd %>/dist/typelike.bundle.js" -s' +
-          ' typelikeBundled && ' +
-          'node "<%= __cwd %>/scripts/dist-files-insert-license.js"'
+                    'terser --compress --output "<%= __cwd %>/dist/typelike.js" -- "<%= __cwd %>/lib/typelike.js" && ' +
+                    'browserify -e "<%= __cwd %>/dist/typelike.js" -o "<%= __cwd %>/dist/typelike.bundle.js" -s' +
+                    ' typelikeBundled && ' +
+                    'node "<%= __cwd %>/scripts/dist-files-insert-license.js"'
       }
     }
   })

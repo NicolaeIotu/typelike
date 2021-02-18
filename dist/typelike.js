@@ -1,6 +1,6 @@
-/* typelike is Copyright (C) 2020 Nicolae Iotu, nicolae.g.iotu@gmail.com
+/* typelike is Copyright (C) 2020-2021 Nicolae Iotu, nicolae.g.iotu@gmail.com
 Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
-"use strict";const hasOwnProperty=Object.prototype.hasOwnProperty;function xtypeof(o){return Object.prototype.toString.call(o).slice(8,-1).toLowerCase()}function iterationType(o){switch(xtypeof(o)){case"object":return 4;case"array":return 3;case"map":return 2;case"set":return 1;default:return 0}}const templateSettings={maxDepth:0,properties:{allowMissing:!1}};let typelikeSettings=templateSettings,rtDepth=0;const resetOptions=function(){typelikeSettings=templateSettings,rtDepth=0};function compare(o,t){const ito=iterationType(o);if(ito!==iterationType(t))return!1;if(0!==ito){if(0!==typelikeSettings.maxDepth&&(rtDepth++,rtDepth>typelikeSettings.maxDepth))return!0;if(ito>=3){const oSize=Object.keys(o).length,tSize=Object.keys(t).length;if(!typelikeSettings.properties.allowMissing){if(0===oSize)return oSize===tSize;if(oSize!==tSize)return!1}for(const k in o)if(hasOwnProperty.call(t,k+"")){if(!compare(o[k],t[k]))return!1}else if(!typelikeSettings.properties.allowMissing)return!1}else{const oSize=o.size,tSize=t.size;if(!typelikeSettings.properties.allowMissing){if(0===oSize)return oSize===tSize;if(oSize!==tSize)return!1}const oKeysIterator=o.keys(),tKeysIterator=t.keys();if(1===ito){for(let i=0;i<oSize;i++)if(!compare(oKeysIterator.next().value,tKeysIterator.next().value))return!1}else{const oValuesIterator=o.values(),tValuesIterator=t.values();for(let i=0;i<oSize;i++){if(oKeysIterator.next().value!==tKeysIterator.next().value)return!1;if(!compare(oValuesIterator.next().value,tValuesIterator.next().value))return!1}}}return 0!==typelikeSettings.maxDepth&&rtDepth--,!0}return xtypeof(o)===xtypeof(t)}
+"use strict";const hasOwnProperty=Object.prototype.hasOwnProperty;function xtypeof(o){return Object.prototype.toString.call(o).slice(8,-1).toLowerCase()}function iterationType(o){switch(xtypeof(o)){case"object":return 4;case"array":return 3;case"map":return 2;case"set":return 1;default:return 0}}const templateSettings={maxDepth:0,properties:{allowMissing:!1,allowNull:!1}};let typelikeSettings=templateSettings,rtDepth=0;const resetOptions=function(){typelikeSettings=templateSettings,rtDepth=0};function compare(o,t){const ito=iterationType(o);if(ito!==iterationType(t))return!1;if(0!==ito){if(0!==typelikeSettings.maxDepth&&(rtDepth++,rtDepth>typelikeSettings.maxDepth))return!0;if(ito>=3){const oSize=Object.keys(o).length,tSize=Object.keys(t).length;if(!typelikeSettings.properties.allowMissing){if(0===oSize)return oSize===tSize;if(oSize!==tSize)return!1}for(const k in o)if(hasOwnProperty.call(t,k+"")){if(!compare(o[k],t[k]))return!1}else if(!typelikeSettings.properties.allowMissing)return!1}else{const oSize=o.size,tSize=t.size;if(!typelikeSettings.properties.allowMissing){if(0===oSize)return oSize===tSize;if(oSize!==tSize)return!1}const oKeysIterator=o.keys(),tKeysIterator=t.keys();if(1===ito){for(let i=0;i<oSize;i++)if(!compare(oKeysIterator.next().value,tKeysIterator.next().value))return!1}else{const oValuesIterator=o.values(),tValuesIterator=t.values();for(let i=0;i<oSize;i++){if(oKeysIterator.next().value!==tKeysIterator.next().value)return!1;if(!compare(oValuesIterator.next().value,tValuesIterator.next().value))return!1}}}return 0!==typelikeSettings.maxDepth&&rtDepth--,!0}return xtypeof(o)===xtypeof(t)||typelikeSettings.properties.allowNull&&"null"===xtypeof(o)}
 /**
  * With **typelike** you can reliably determine if an object resembles other template object(s) used as reference.<br>
  * The comparison is done using the keys and the type of data where applicable.<br>
@@ -21,7 +21,7 @@ Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
  * @param templates {object} Templates are trusted objects. The test object `obj` must match in depth the types of
  * these templates.
  * @returns {boolean} **true** if the target object `obj` matches any of the templates provided, or **false** otherwise
- * @version 0.3.7
+ * @version 0.3.8
  * @license Apache-2.0
  * @author Nicolae Iotu <nicolae.g.iotu@gmail.com>
  * @exports typelike
@@ -77,7 +77,8 @@ Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
  * {
  *     maxDepth: 0,
  *     properties: {
- *         allowMissing: false
+ *         allowMissing: false,
+ *         allowNull: false
  *     }
  * }
  *```
@@ -94,7 +95,7 @@ Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
  * @param settings {{maxDepth: number, properties: {allowMissing: boolean}}} The settings object to be used for this
  * call only.
  * @returns {boolean} **true** if the target object `obj` matches any of the templates provided, or **false** otherwise
- * @version 0.3.7
+ * @version 0.3.8
  * @license Apache-2.0
  * @author Nicolae Iotu <nicolae.g.iotu@gmail.com>
  * @exports typelikeCustom
@@ -102,7 +103,7 @@ Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
  * const { typelikeCustom } = require('typelike')
  * const testObject = {
  *     lvl1: { sm: 'type ... like' },
- *     arr: [[1], 'abcdef']
+ *     arr: [[1], null]
  * }
  * const templateObject = {
  *     lvl1: { lvl2: [3, 4, 212], sm: '' },
@@ -111,7 +112,8 @@ Licensed under SPDX Apache-2.0, http://www.apache.org/licenses/LICENSE-2.0 */
  * const settings = {
  *     maxDepth: 3,
  *     properties: {
- *         allowMissing: true
+ *         allowMissing: true,
+ *         allowNull: true
  *     }
  * }
  * console.log(typelikeCustom(testObject, templateObject, settings)) // true

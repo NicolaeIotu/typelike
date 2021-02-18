@@ -174,13 +174,18 @@ console.log(typelike(testObject, template1, template2, template3)) // true
 {
   maxDepth: 0,
   properties: {
-    allowMissing: false
+    allowMissing: false,
+    allowNull: false
   }
 }
 ```
 * **maxDepth** indicates the maximum depth allowed for iterations. Defaults to `0` (unlimited depth levels)
-* **properties.allowMissing** indicates if the keys/properties are mandatory, or are not mandatory and can miss from
- arrays, objects, maps and sets. Defaults to `false` (all keys/properties are mandatory).
+* **properties.allowMissing** takes a boolean value and indicates that the keys/properties are mandatory (`false`), or 
+  not mandatory and can miss from arrays, objects, maps and sets (`true`). Defaults to `false` (all keys/properties are 
+  mandatory)
+* **properties.allowNull** takes a boolean value and indicates that **null** value keys/properties of a target object,
+  match **any** corresponding types in the template object(s) (`true`). Defaults to `false` which means that **null** 
+  value keys/properties of a target object match corresponding **null** value keys/properties of template object(s).
 
 **Example:**
 ```
@@ -212,4 +217,4 @@ console.log(typelikeCustom(testObject, templateObject, settings)) // true
 Additional settings are planned for the next releases. For suggestions and issues please contact the author.
 
 
-**typelike** is &copy; Copyright 2020 Nicolae Iotu, nicolae.g.iotu@gmail.com
+**typelike** is &copy; Copyright 2020-2021 Nicolae Iotu, nicolae.g.iotu@gmail.com
