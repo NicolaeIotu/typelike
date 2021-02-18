@@ -1,5 +1,7 @@
 # typelike Changelog
 
+## v0.4.0 Backend improvements to documentation, release and distribution
+
 ## v0.3.9 Added setting option (allowNull) to match null values against all types
 
 ## v0.3.8 Backend and documentation improvements

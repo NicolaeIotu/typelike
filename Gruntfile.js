@@ -42,7 +42,8 @@ module.exports = function (grunt) {
       },
       pretest: {
         command: 'grunt jsdoc && ' +
-                    'terser --compress --output "<%= __cwd %>/dist/typelike.js" -- "<%= __cwd %>/lib/typelike.js" && ' +
+                    'terser --compress --comments false --output "<%= __cwd %>/dist/typelike.js" ' +
+                    '-- "<%= __cwd%>/lib/typelike.js" && ' +
                     'browserify -e "<%= __cwd %>/dist/typelike.js" -o "<%= __cwd %>/dist/typelike.bundle.js" -s' +
                     ' typelikeBundled && ' +
                     'node "<%= __cwd %>/scripts/dist-files-insert-license.js"'

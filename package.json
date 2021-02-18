@@ -1,11 +1,11 @@
 {
   "name": "typelike",
-  "version": "0.3.9",
+  "version": "0.4.0",
   "description": "Deep type checking by comparison",
   "main": "dist/typelike.js",
   "scripts": {
     "coverage": "tap --check-coverage --branches=97",
-    "preversion": "./scripts/preversion.sh && npm test",
+    "preversion": "./scripts/preversion.sh && standard --fix lib/* && npm test",
     "version": "git add -A dist docs",
     "postversion": "git push && git push --tags",
     "standard": "standard lib/*",
@@ -37,8 +37,8 @@
   "homepage": "https://github.com/NicolaeIotu/typelike#readme",
   "devDependencies": {
     "browserify": "^17.0.0",
-    "eslint": "^7.13.0",
-    "eslint-config-standard": "^16.0.1",
+    "eslint": "^7.20.0",
+    "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",

@@ -148,6 +148,7 @@ function compare (o, t) {
         for (let i = 0; i &lt; oSize; i++) {
           if (oKeysIterator.next().value === tKeysIterator.next().value) {
             if (!compare(oValuesIterator.next().value, tValuesIterator.next().value)) {
+              console.log(111)
               return false
             }
           } else {
@@ -177,7 +178,8 @@ function compare (o, t) {
  * {
  *     maxDepth: 0,
  *     properties: {
- *         allowMissing: false
+ *         allowMissing: false,
+ *         allowNull: false
  *     }
  * }
  * ```

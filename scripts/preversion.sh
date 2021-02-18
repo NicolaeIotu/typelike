@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# IMPORTANT
-# trigger this with for example: npm version 1.1.1
-
 #npm_package_version=0.3.8
 #npm_new_version=0.3.9
 
