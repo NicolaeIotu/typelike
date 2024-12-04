@@ -1,5 +1,6 @@
-const tap = require('tap')
-const { typelike, typelikeCustom } = require(`${process.cwd()}/lib/typelike`)
+import { typelike, typelikeCustom } from '../lib/typelike.js'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 const st1 = new Set()
 st1.add(1)
@@ -57,23 +58,38 @@ const mp5 = new Map()
 const mp6 = new Map()
 mp6.set('k1', 3)
 
-/// tests
-tap.notOk(typelike(st1, st3))
 
-tap.ok(typelike(mp1, mp2))
-tap.notOk(typelike(mp1, mp3))
-tap.notOk(typelike(mp1, mp4))
+test('Test typelike', async (t) => {
+  await t.test('Fail',() => {
+    assert.ok(!typelike(st1, st3))
+  })
+  await t.test('Fail',() => {
+    assert.ok(!typelike(mp1, mp3))
+  })
+  await t.test('Fail',() => {
+    assert.ok(!typelike(mp1, mp4))
+  })
+  await t.test('Fail',() => {
+    assert.ok(!typelike(mp1, mp6))
+  })
+  await t.test('Ok',() => {
+    assert.ok(typelike(mp1, mp2))
+  })
+})
 
-tap.notOk(typelikeCustom(mp1, mp5, {
-  properties: {
-    allowMissing: true
-  }
-}))
-
-tap.notOk(typelikeCustom(mp1, mp5, {
-  properties: {
-    allowMissing: false
-  }
-}))
-
-tap.notOk(typelike(mp1, mp6))
+test('Test typelikeCustom', async (t) => {
+  await t.test('Fail',() => {
+    assert.ok(!typelikeCustom(mp1, mp5, {
+      properties: {
+        allowMissing: true
+      }
+    }))
+  })
+  await t.test('Fail',() => {
+    assert.ok(!typelikeCustom(mp1, mp5, {
+      properties: {
+        allowMissing: false
+      }
+    }))
+  })
+})

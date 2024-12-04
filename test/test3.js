@@ -1,5 +1,6 @@
-const tap = require('tap')
-const { typelikeCustom } = require(`${process.cwd()}/lib/typelike`)
+import { typelikeCustom } from '../lib/typelike.js'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 const testObject = {
   lvl1: { sm: 'type ... like' },
@@ -18,4 +19,8 @@ const settings = {
   }
 }
 
-tap.ok(typelikeCustom(testObject, templateObject, settings))
+test('Test typelikeCustom', async (t) => {
+  await t.test('Ok',() => {
+    assert.ok(typelikeCustom(testObject, templateObject, settings))
+  })
+})

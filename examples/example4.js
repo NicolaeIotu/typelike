@@ -1,4 +1,4 @@
-const { typelike } = require('../lib/typelike')
+import { typelike } from 'typelike'
 
 const testObject = {
   lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
@@ -17,7 +17,7 @@ const templateObject1 = {
     }
   },
   arr: [[1, 'xyz'], 'abcdef'],
-  basic: 'testtesttest'
+  basic: 'test'
 }
 const templateObject2 = {
   lvl1: { sm: 'type ... like' },

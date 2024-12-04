@@ -1,4 +1,4 @@
-const { typelike } = require('../lib/typelike')
+import { typelike } from 'typelike'
 
 const st1 = new Set()
 st1.add(1)
