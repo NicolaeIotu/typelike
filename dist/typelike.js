@@ -13,6 +13,7 @@
  * @preserve
  * @typedef {object} TypeLikeSettingsProperties
  * @property {boolean} allowMissing
+ * @property {boolean} allowNull
  */
 /**
  * @preserve
@@ -87,12 +88,12 @@
  * }
  * console.log(typelike(testObject, template1, template2)) // false
  * console.log(typelike(testObject, template1, template2, template3)) // true
- */exports.typelike=function(obj,templates){const lastIndex=arguments.length-1;if(lastIndex<1)throw new Error("At least two parameters required.");let result=!1;for(let i=1;i<=lastIndex;i++)result=result||compare(obj,arguments[i]);return resetOptions(),result}
+ */export function typelike(obj,templates){const lastIndex=arguments.length-1;if(lastIndex<1)throw new Error("At least two parameters required.");let result=!1;for(let i=1;i<=lastIndex;i++)result=result||compare(obj,arguments[i]);return resetOptions(),result}
 /**
- * **typelikeCustom** behaves in the same way as {@link exports.typelike|typelike}, but expects that the last parameter
+ * **typelikeCustom** behaves in the same way as {@link typelike}, but expects that the last parameter
  * passed to
  * be a special settings object which is mandatory and has the following default format for standard
- * {@link exports.typelike|typelike} calls:
+ * {@link typelike} calls:
  * ```
  * {
  *     maxDepth: 0,
@@ -112,7 +113,7 @@
  * @param {object} obj A test object to match against the template(s).
  * @param {object} templates Templates are trusted objects. The test object `obj` must match in depth the types of
  * these templates.
- * @param {TypeLikeSettings} settings The settings object to be used for this call only.
+ * @param {TypeLikeSettings|object} settings The settings object to be used for this call only.
  * @returns {boolean} **true** if the target object `obj` matches any of the templates provided, or **false** otherwise
  * @version 0.3.8
  * @license Apache-2.0
@@ -136,4 +137,4 @@
  *     }
  * }
  * console.log(typelikeCustom(testObject, templateObject, settings)) // true
- */,exports.typelikeCustom=function(obj,templates,settings){const lastIndex=arguments.length-1;if(lastIndex<2)throw new Error("At least three parameters required.");return typelikeSettings=arguments[lastIndex],exports.typelike.apply(null,Array.from(arguments).filter((function(e,i){return i!==lastIndex})))};
+ */export function typelikeCustom(obj,templates,settings){const lastIndex=arguments.length-1;if(lastIndex<2)throw new Error("At least three parameters required.");return typelikeSettings=arguments[lastIndex],typelike.apply(null,Array.from(arguments).filter((function(e,i){return i!==lastIndex})))}
