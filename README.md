@@ -1,6 +1,5 @@
-![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/tests/badge.svg)
-![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/max%20coverage/badge.svg)
-![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/standard%20code%20style/badge.svg)
+![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/CI/badge.svg)
+![Actions Status](https://github.com/NicolaeIotu/typelike/workflows/Coverage/badge.svg)
 
 # typelike
 
