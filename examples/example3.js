@@ -1,4 +1,4 @@
-const { typelikeCustom } = require('../lib/typelike')
+import { typelikeCustom } from 'typelike'
 
 const testObject = {
   lvl1: { sm: 'type ... like' },

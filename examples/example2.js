@@ -1,4 +1,4 @@
-const { typelike } = require('../lib/typelike')
+import { typelike } from 'typelike'
 
 function contentGenerator () {
   // ...
