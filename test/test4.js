@@ -1,5 +1,6 @@
-const tap = require('tap')
-const { typelike, typelikeCustom } = require(`${process.cwd()}/lib/typelike`)
+import { typelike, typelikeCustom } from '../lib/typelike.js'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 const testObject = {
   lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
@@ -18,7 +19,7 @@ const templateObject1 = {
     }
   },
   arr: [[1, 'xyz'], 'abcdef'],
-  basic: 'testtesttest'
+  basic: 'test'
 }
 const templateObject2 = {
   lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
@@ -34,20 +35,41 @@ const templateObject4 = {
   arr: 1
 }
 
-tap.notOk(typelike(testObject, templateObject1, templateObject2))
-tap.ok(typelike(testObject, templateObject1, templateObject2, templateObject3))
+test('Test typelike', async (t) => {
+  await t.test('Fail',() => {
+    assert.ok(!typelike(testObject, templateObject1, templateObject2))
+  })
+  await t.test('Ok',() => {
+    assert.ok(typelike(testObject, templateObject1, templateObject2, templateObject3))
+  })
+})
 
-tap.notOk(typelikeCustom(testObject, templateObject2, {
-  properties: {
-    allowMissing: false
-  }
-}))
+test('Test typelike', async (t) => {
+  await t.test('Fail',() => {
+    assert.ok(!typelike(testObject, templateObject1, templateObject2))
+  })
+  await t.test('Fail',() => {
+    assert.ok(!typelike(testObject, templateObject4))
+  })
+  await t.test('Ok',() => {
+    assert.ok(typelike(testObject, templateObject1, templateObject2, templateObject3))
+  })
+})
 
-tap.ok(typelikeCustom(testObject, templateObject1, {
-  maxDepth: 1,
-  properties: {
-    allowMissing: true
-  }
-}))
-
-tap.notOk(typelike(testObject, templateObject4))
+test('Test typelikeCustom', async (t) => {
+  await t.test('Fail',() => {
+    assert.ok(!typelikeCustom(testObject, templateObject2, {
+      properties: {
+        allowMissing: false
+      }
+    }))
+  })
+  await t.test('Ok',() => {
+    assert.ok(typelikeCustom(testObject, templateObject1, {
+      maxDepth: 1,
+      properties: {
+        allowMissing: true
+      }
+    }))
+  })
+})

@@ -1,5 +1,6 @@
-const tap = require('tap')
-const { typelike } = require(`${process.cwd()}/lib/typelike`)
+import { typelike } from '../lib/typelike.js'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 function contentGenerator () {
   // ...
@@ -15,7 +16,7 @@ function contentGenerator () {
       }
     },
     arr: [[1, 'xyz'], 'abcdef'],
-    basic: 'testtesttest'
+    basic: 'test'
   }
 }
 
@@ -33,7 +34,11 @@ const templateObject = {
     }
   },
   arr: [[45, 'sample'], String('string')],
-  basic: 'testtesttest'
+  basic: 'test'
 }
 
-tap.ok(typelike(testObject, templateObject))
+test('Test typelike', async (t) => {
+  await t.test('Ok',() => {
+    assert.ok(typelike(testObject, templateObject))
+  })
+})

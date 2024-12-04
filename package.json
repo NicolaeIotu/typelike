@@ -1,16 +1,16 @@
 {
   "name": "typelike",
   "version": "0.4.0",
+  "type": "module",
   "description": "Deep type checking by comparison",
   "main": "dist/typelike.js",
   "scripts": {
-    "coverage": "tap --check-coverage --branches=97",
-    "preversion": "./scripts/preversion.sh && standard --fix lib/* && npm test",
-    "version": "git add -A dist docs",
+    "preversion": "npm -y exec -- standard --fix lib/* && npm test && npm -y exec -- terser lib/typelike.js -c --comments --keep-fnames > dist/typelike.js",
+    "version": "git add -A dist",
     "postversion": "git push && git push --tags",
-    "standard": "standard lib/*",
-    "start": "node dist/typelike.js",
-    "test": "grunt pretest && tap --timeout=0 --no-browser --functions=100 --lines=100 --statements=100 --branches=97 --reporter=base"
+    "standard": "npm -y exec -- standard lib/*",
+    "coverage": "node --experimental-test-coverage test/main.js coverage",
+    "test": "node --experimental-test-coverage test/main.js"
   },
   "repository": {
     "type": "git",
@@ -30,23 +30,9 @@
     "name": "Nicolae, Iotu",
     "url": "https://github.com/NicolaeIotu"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/NicolaeIotu/typelike/issues"
   },
-  "homepage": "https://github.com/NicolaeIotu/typelike#readme",
-  "devDependencies": {
-    "browserify": "^17.0.0",
-    "eslint": "^7.20.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "grunt": "^1.3.0",
-    "grunt-shell": "^3.0.1",
-    "jsdoc": "^3.6.6",
-    "standard": "^16.0.3",
-    "tap": "^14.10.8",
-    "terser": "^5.5.1"
-  }
+  "homepage": "https://github.com/NicolaeIotu/typelike#readme"
 }

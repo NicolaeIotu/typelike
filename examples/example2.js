@@ -14,7 +14,7 @@ function contentGenerator () {
       }
     },
     arr: [[1, 'xyz'], 'abcdef'],
-    basic: 'testtesttest'
+    basic: 'test'
   }
 }
 
@@ -32,7 +32,7 @@ const templateObject = {
     }
   },
   arr: [[45, 'sample'], String('string')],
-  basic: 'testtesttest'
+  basic: 'test'
 }
 
 console.log(typelike(testObject, templateObject)) // true

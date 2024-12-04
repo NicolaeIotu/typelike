@@ -17,7 +17,7 @@ const templateObject1 = {
     }
   },
   arr: [[1, 'xyz'], 'abcdef'],
-  basic: 'testtesttest'
+  basic: 'test'
 }
 const templateObject2 = {
   lvl1: { sm: 'type ... like' },

@@ -1,9 +1,10 @@
-const tap = require('tap')
-const { typelike } = require(`${process.cwd()}/lib/typelike`)
+import { typelike } from '../lib/typelike.js'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 const testObject = {
   lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
-  arr: [[1, 'xyz'], 'abcdef']
+  arr: [[1, 'xyz'], 'abc']
 }
 
 const templateObject = {
@@ -11,4 +12,8 @@ const templateObject = {
   arr: [[44, ''], '']
 }
 
-tap.ok(typelike(testObject, templateObject))
+test('Test typelike', async (t) => {
+  await t.test('Ok',() => {
+    assert.ok(typelike(testObject, templateObject))
+  })
+})
