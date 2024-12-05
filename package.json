@@ -7,7 +7,6 @@
   "scripts": {
     "preversion": "npm -y exec -- standard --fix lib/* && npm test && npm -y exec -- terser lib/typelike.js -c --comments --keep-fnames > dist/typelike.js",
     "version": "git add -A dist",
-    "postversion": "git push --set-upstream-to && git push --tags",
     "standard": "npm -y exec -- standard lib/*",
     "coverage": "node --experimental-test-coverage test/main.js coverage",
     "test": "node --experimental-test-coverage test/main.js"
