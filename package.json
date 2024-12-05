@@ -1,6 +1,6 @@
 {
   "name": "typelike",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "Deep type checking by comparison",
   "main": "dist/typelike.js",
