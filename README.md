@@ -4,23 +4,18 @@
 # typelike
 
 With **typelike** you can reliably determine if an object resembles other template object(s) used as reference.<br>
-The comparison is done using the keys and the type of data where applicable.<br>
-In practice using **typelike** is a breeze. You just get a trusted object and have **typelike** compare with a target
- object. That's all. Plain Javascript, no aliens, lightweight, zero dependencies, fast, easy to verify and use.
+The comparison is done using the keys and the type of data where applicable.
 
 * [Examples](#examples)
-  * [typelike in Node.js](#typelike-in-nodejs)
-  * [typelike in browser](#typelike-in-browser)
 * [How to compare with typelike](#how-to-compare-with-typelike)
 * [Using multiple templates with typelike](#using-multiple-templates-with-typelike)
 * [typelike Settings](#typelike-settings)
 * [Others](#others)
 
 ## Examples
-### typelike in Node.js
 **Example 1:**
 ```
-const { typelike } = require('typelike')
+import { typelike } from 'typelike'
 
 const testObject = {
   lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
@@ -36,7 +31,7 @@ console.log(typelike(testObject, templateObject)) // true
 ```
 **Example 2:**
 ```
-const { typelike } = require('typelike')
+import { typelike } from 'typelike'
 
 function contentGenerator () {
   // ...
@@ -76,34 +71,6 @@ const templateObject = {
 console.log(typelike(testObject, templateObject)) // true
 ```
 
-### typelike in browser
-```
-...
-<head>
-    ...
-    <script src="./typelike.bundle.js"></script>
-    ...
-...
-    <script>
-
-      const typelike = typelikeBundled.typelike
-    
-      const testObject = {
-        lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
-        arr: [[1, 'xyz'], 'abcdef']
-      }
-    
-      const templateObject = {
-        lvl1: { lvl2: [3, 4, 212], sm: '' },
-        arr: [[44, ''], '']
-      }
-    
-      console.log(typelike(testObject, templateObject)) // true
-    
-    </script>
-...
-```
-
 ## How to compare with typelike
 **typelike** iterates as deeply as possible any arrays, objects, maps and sets, while taking into account 
 [typelike Settings](#typelike-settings).
@@ -128,7 +95,7 @@ Multiple templates can be used with every call to `typelike`. If the subject obj
  parameter specified) matches any of them then `typelike` will return true.
  **Example:**
 ```
-const { typelike } = require('typelike')
+import { typelike } from 'typelike'
 
 const testObject = {
   lvl1: { lvl2: [1, 2, 3], sm: 'type ... like' },
@@ -188,7 +155,7 @@ console.log(typelike(testObject, template1, template2, template3)) // true
 
 **Example:**
 ```
-const { typelikeCustom } = require('typelike')
+import { typelikeCustom } from 'typelike'
 
 const testObject = {
   lvl1: { sm: 'type ... like' },
@@ -211,9 +178,5 @@ console.log(typelikeCustom(testObject, templateObject, settings)) // true
 ```
 
 ## Others
-**typelike** should fit most target purposes. For some cases remember you can use as many templates as needed. 
- 
-Additional settings are planned for the next releases. For suggestions and issues please contact the author.
 
-
-**typelike** is &copy; Copyright 2020-2021 Nicolae Iotu, nicolae.g.iotu@gmail.com
+**typelike** is &copy; Copyright 2020-2024 Nicolae Iotu, nicolae.g.iotu@gmail.com
